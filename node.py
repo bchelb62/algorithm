@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3.4
 
 """ dot -Tpng -0 ou -o fichier.dot"""
 
@@ -39,14 +39,12 @@ class Graph :
         self.edges = set()
         self.name = name
 
-    def add_node(self,name,value,couleur="black"):
-        if name not in self.nodes :
-            new = Node(name,value,couleur)
-            self.nodes[name] = new
-            return new
+   
+    def add_node(self,node):
+        if node.name not in self.nodes :
+            self.nodes[node.name]=node
         else :
-            return self.nodes[name]
-
+            return node
 
     def add_edge(self ,src , dest ,data):
         S = Node(src,black)
@@ -56,13 +54,18 @@ class Graph :
         S.add_neighbor(D)
         self.edges.add(Edge(src,dest,data))
 
+    def __str__(self):
+        return "Nodes : "+" , ".join([key for key in self.nodes])\
+            +"\nedgs : "+" , ".join([edge.src+" "+edge.dest  for edge in self.edges])
+        
 
 if __name__ == '__main__' :
-    n= Node(name="bachir",color="red",value=23)
-    n2 =Node(name="vero",color="green",value=233)
-    n3=Node(name="boris",color="pink",value=78)
-    n3. add_neighbor(n)
+    n1= Node(name="bachir",color="red",value=23)
+    n2= Node(name="chelbi",color="pink",value=56)
     edge = Edge("a" , "b" , "23" , color="black")
-    edge2 = Edge("c" , "e" , "89" , color="red")
-    print(edge2)
-    
+
+    graphe = Graph("graphe")
+    graphe.add_node(n1)
+    graphe.add_node(n2)
+    graphe.add_edge()
+    print(graphe)
